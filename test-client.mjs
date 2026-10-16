@@ -1,0 +1,15 @@
+import { Client } from "@modelcontextprotocol/sdk/client/index.js";
+import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
+import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
+const url = process.argv[2];
+const t = url ? new StreamableHTTPClientTransport(new URL(url)) : new StdioClientTransport({ command: "node", args: ["dist/stdio.js"] });
+const c = new Client({ name: "hm-test", version: "1" }); await c.connect(t);
+const tools = (await c.listTools()).tools.map(t => t.name); console.log("transport:", url ?? "stdio", "\ntools:", tools.join(", "));
+const call = async (name, args) => { const r = await c.callTool({ name, arguments: args }); return JSON.parse(r.content[0].text); };
+const s = await call("search_servers", { query: "bambu" }); console.log("search_servers(bambu):", s.count, s.results.slice(0,3).map(x=>x.slug).join(", "));
+const d = await call("search_servers", { query: "", device: "esp32" }); console.log("search_servers('',esp32):", d.count);
+const g = await call("get_server", { slug: "griches-bambu-mcp" }); console.log("get_server:", g.name, "| cmds:", g.install_commands.length, "| config:", !!g.client_config);
+const l = await call("list_devices", {}); console.log("list_devices:", l.length, "families; top:", l.slice(0,3).map(x=>`${x.name}(${x.count})`).join(", "));
+const r = await call("recommend_for_device", { device: "Bambu P1S", goal: "monitor prints and skip objects" }); console.log("recommend(Bambu P1S):", r.matched, "->", r.recommendations.map(x=>x.slug).join(", "));
+const r2 = await call("recommend_for_device", { device: "Voron", goal: "edit config" }); console.log("recommend(Voron):", r2.matched, "->", r2.recommendations.slice(0,3).map(x=>x.slug).join(", "));
+await c.close();
