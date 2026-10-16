@@ -44,7 +44,7 @@ export function createServer() {
   }, async ({ slug }) => {
     const s = SERVERS.find(x => x.slug === slug) ?? SERVERS.find(x => x.slug.includes(slug.toLowerCase()) || x.name.toLowerCase() === slug.toLowerCase());
     if (!s) return { ...text({ error: `No server with slug '${slug}'. Use search_servers first.` }), isError: true };
-    return text({ ...summary(s), what_it_does: s.can_do, requirements: s.requires, install_commands: s.commands, install_notes: s.notes, client_config: s.config, caveat: "Commands are copied from the project README and not bench-tested by HardwareMCP. Replace placeholders and review the code before running." });
+    return text({ ...summary(s), what_it_does: s.can_do, requirements: s.requires, install_commands: s.commands, install_notes: s.notes, client_config: s.config, caveat: "Install steps are taken from the project README (its recommended path first) and not bench-tested by HardwareMCP. Replace placeholders and review the code before running." });
   });
   server.registerTool("list_devices", { description: "List every device family in the catalog with how many MCP servers support it.", inputSchema: {} }, async () => {
     const c: Record<string, number> = {}; SERVERS.forEach(s => s.devices.forEach(d => c[d] = (c[d] ?? 0) + 1));
