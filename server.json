@@ -1,0 +1,10 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.saadvz/hardwaremcp",
+  "title": "HardwareMCP",
+  "description": "Find MCP servers for ESP32, Arduino, 3D printers, Home Assistant, cameras and other hardware.",
+  "version": "0.1.0",
+  "websiteUrl": "https://hardwaremcp.khanex.ai/mcp/",
+  "repository": { "url": "https://github.com/saadvz/hardwaremcp-mcp", "source": "github" },
+  "remotes": [ { "type": "streamable-http", "url": "https://hardwaremcp.khanex.ai/mcp" } ]
+}

@@ -1,5 +1,17 @@
 # hardwaremcp
 
+[![MCP Registry](https://img.shields.io/badge/MCP_Registry-io.github.saadvz%2Fhardwaremcp-e5481b)](https://registry.modelcontextprotocol.io/v0/servers?search=io.github.saadvz/hardwaremcp)
+[![Remote endpoint](https://img.shields.io/website?url=https%3A%2F%2Fhardwaremcp.khanex.ai%2F&label=endpoint&up_message=live)](https://hardwaremcp.khanex.ai/mcp/)
+[![Transport](https://img.shields.io/badge/transport-streamable_HTTP-14140f)](https://hardwaremcp.khanex.ai/mcp/)
+[![Auth](https://img.shields.io/badge/auth-none-14140f)](https://hardwaremcp.khanex.ai/mcp/)
+[![Catalog](https://img.shields.io/badge/catalog-59_servers-e5481b)](https://hardwaremcp.khanex.ai)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+
+**Remote endpoint:** `https://hardwaremcp.khanex.ai/mcp`. Paste it into any MCP client: no install, no API key.
+
+Ask your agent *"which MCP server should I use for my Bambu P1S?"* and it gets the right server, install commands and client config from the [HardwareMCP catalog](https://hardwaremcp.khanex.ai).
+
 An MCP server that helps your AI agent find **MCP servers for physical hardware**: ESP32, Arduino, Raspberry Pi, RP2040, 3D printers (Bambu, Prusa, Klipper, OctoPrint), Home Assistant, cameras (Frigate, UniFi Protect, ONVIF), Zigbee, serial/BLE and lab gear.
 
 It's a thin layer over the [HardwareMCP catalog](https://hardwaremcp.khanex.ai): 59 servers with install commands and client configs copied from their READMEs.
@@ -74,3 +86,8 @@ Install commands come from each project's README and haven't been bench-tested b
 ## License
 
 MIT
+
+## Listed in
+
+- [Official MCP Registry](https://registry.modelcontextprotocol.io) as `io.github.saadvz/hardwaremcp`
+- [Glama](https://glama.ai/mcp/servers), via `glama.json`

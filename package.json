@@ -48,5 +48,6 @@
   },
   "bugs": {
     "url": "https://github.com/saadvz/hardwaremcp-mcp/issues"
-  }
+  },
+  "mcpName": "io.github.saadvz/hardwaremcp"
 }
