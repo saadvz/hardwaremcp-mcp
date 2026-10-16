@@ -15,7 +15,7 @@ It's a thin layer over the [HardwareMCP catalog](https://hardwaremcp.khanex.ai):
 
 ## Use the hosted server (no install)
 
-Endpoint: `https://hardwaremcp.khanex.ai/mcp` (Streamable HTTP, stateless, no auth)
+Endpoint: `https://hardwaremcp.khanex.ai/mcp` (Streamable HTTP, stateless, no auth, CORS open, JSON responses). `POST` handles JSON-RPC, `OPTIONS` returns 204 with CORS headers, and `GET`/`DELETE` return 405 because there are no sessions or server-initiated streams.
 
 **Claude Code**
 ```bash
@@ -32,10 +32,26 @@ claude mcp add --transport http hardwaremcp https://hardwaremcp.khanex.ai/mcp
 { "mcpServers": { "hardwaremcp": { "command": "npx", "args": ["-y", "mcp-remote", "https://hardwaremcp.khanex.ai/mcp"] } } }
 ```
 
+**Grok Bot** (desktop app): there's no settings field for MCP URLs. In a Bot chat, send:
+```
+Add a custom MCP server named hardwaremcp at https://hardwaremcp.khanex.ai/mcp
+```
+Confirm when asked (no sign-in needed), then type `@` and pick hardwaremcp. ([Cursor forum answer](https://forum.cursor.com/t/grokbot-custom-connectors/169965))
+
+**Muse** (Meta): ask Muse in chat to create a Custom Connector ([Meta Help Center](https://www.meta.com/help/artificial-intelligence/1687253048996149/)):
+```
+Create a Custom Connector for a new remote MCP server, then connect to it:
+- Name: hardwaremcp
+- Transport: remote streamable HTTP
+- URL: https://hardwaremcp.khanex.ai/mcp
+- Auth: none (public, no API key or OAuth)
+Then list its tools and call list_devices to confirm it works.
+```
+
 ## Run locally (stdio)
 
 ```bash
-npx -y hardwaremcp
+npx -y hardwaremcp   # once published to npm
 ```
 ```json
 { "mcpServers": { "hardwaremcp": { "command": "npx", "args": ["-y", "hardwaremcp"] } } }

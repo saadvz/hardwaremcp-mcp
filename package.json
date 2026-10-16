@@ -41,5 +41,12 @@
   "engines": {
     "node": ">=18"
   },
-  "main": "dist/core.js"
+  "main": "dist/core.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saadvz/hardwaremcp-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saadvz/hardwaremcp-mcp/issues"
+  }
 }
